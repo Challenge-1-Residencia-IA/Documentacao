@@ -98,7 +98,7 @@ python3 busca_web.py
 Rodar o script
 
 
-## 📌 Próximos Passos (Para a Pessoa 3)
+## 📌 Próximos Passos (Larissa)
 Melhorar a busca na web — adicionar filtros de data e priorizar fontes confiáveis
 Implementar cache de resultados — evitar buscas repetidas
 Adicionar tratamento de erros — lidar com links indisponíveis e páginas que exigem autenticação
