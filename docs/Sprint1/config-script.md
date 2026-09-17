@@ -1,7 +1,11 @@
 # 📄 Documentação — Larissa (Busca e Dados)
+
 Data: 17/09/2026
-Responsável: Pessoa 3
+
+Responsável: Larissa
+
 Sprint: Sprint 1 — Fundação Técnica
+
 Status: ✅ Concluído
 
 ## 🎯 Objetivo da Tarefa
