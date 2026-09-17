@@ -30,10 +30,35 @@ theme:
 
 markdown_extensions:
   - admonition
+  - tables
   - toc:
       permalink: true
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
   - Início: index.md
+  - Visão do Projeto:
+      - Visão geral: visao-geral.md
+      - Público-alvo: publico-alvo.md
+      - Princípios do sistema: principios.md
+  - Produto:
+      - Casos de uso: casos-de-uso.md
+      - Requisitos: requisitos.md
+      - Fluxo e interação: fluxo-e-interacao.md
+  - Sistema de IA:
+      - Fontes e evidências: fontes-e-evidencias.md
+      - Arquitetura: arquitetura.md
+      - Pipeline de IA: pipeline-ia.md
+  - Qualidade e Governança:
+      - Privacidade e segurança: privacidade-e-seguranca.md
+      - Métricas e avaliação: metricas-e-avaliacao.md
+      - Testes: testes.md
+      - Riscos: riscos.md
+  - Planejamento:
+      - Roadmap e cronograma: roadmap.md
+  - Referências: referencias.md
