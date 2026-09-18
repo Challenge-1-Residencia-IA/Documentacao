@@ -32,9 +32,6 @@
 | RF23 | O sistema deve tratar todo o conteúdo obtido de fontes externas como dado a ser analisado, nunca como instrução para o modelo de IA. |
 | RF24 | O sistema deve utilizar linguagem neutra e não confrontativa, sem atribuir intenção ao usuário, nas respostas geradas. |
 
-!!! note "Origem dos RF19–RF24"
-    Esses requisitos formalizam compromissos que já estavam descritos em [Princípios do sistema](principios.md), [Fontes e evidências](fontes-e-evidencias.md) e [Visão geral](visao-geral.md), mas ainda não tinham um ID de requisito rastreável nesta página.
-
 ## Requisitos não funcionais
 
 | ID | Nome | Descrição |
