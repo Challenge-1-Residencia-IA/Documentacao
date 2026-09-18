@@ -63,6 +63,8 @@ nav:
       - Riscos: riscos.md
   - Planejamento:
       - Roadmap e cronograma: roadmap.md
-  - Referências: referencias.md
   - Relatórios: 
       - Primeiro relatorio Sprint 1: Sprint1/relatorio-avaliacao-modelo.md
+
+  # deixar a aba de referências sempre por último
+  - Referências: referencias.md
