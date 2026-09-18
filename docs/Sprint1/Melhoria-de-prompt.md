@@ -48,6 +48,7 @@ Afirmações identificadas:
 2. "A medida entra em vigor amanhã e o valor será de R$ 10 por respiração" — Informação fora de contexto
 
 Explicação para a classificação como sátira:
+
 - A afirmação descreve algo extremamente absurdo, exagerado (taxar o ar que respiramos) e impossível na prática atual.
 - As evidências fornecidas mostram que essa é uma piada satírica.
 O que melhorou:
@@ -56,6 +57,7 @@ Antes	Depois
 Classificou como "Fato verificável"	Classificou como "Sátira" ✅
 Tratou como afirmação séria	Explicou por que é uma piada ✅
 Não mencionou sátira	Justificou a classificação ✅
+
 📌 Limitações Conhecidas
 
 O modelo ainda pode se confundir se a sátira for muito sutil
