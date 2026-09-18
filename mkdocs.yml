@@ -49,6 +49,7 @@ nav:
   - Produto:
       - Casos de uso: casos-de-uso.md
       - Requisitos: requisitos.md
+      - Levantamento de requisitos: levantamento-de-requisitos.md
       - Fluxo e interação: fluxo-e-interacao.md
   - Sistema de IA:
       - Fontes e evidências: fontes-e-evidencias.md

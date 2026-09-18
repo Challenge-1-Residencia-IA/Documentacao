@@ -22,6 +22,7 @@ A pergunta que guia todo o projeto é:
 | [Princípios do sistema](principios.md) | Regras que orientam produto, UX e implementação |
 | [Casos de uso](casos-de-uso.md) | Cenários de uso do sistema |
 | [Requisitos](requisitos.md) | Requisitos funcionais e não funcionais |
+| [Levantamento de requisitos](levantamento-de-requisitos.md) | Técnicas usadas e recomendadas para levantar requisitos e validar o público-alvo |
 | [Fluxo e interação](fluxo-e-interacao.md) | Como a conversa acontece do início ao fim |
 | [Fontes e evidências](fontes-e-evidencias.md) | Como o sistema busca, compara e avalia evidências |
 | [Arquitetura](arquitetura.md) | Componentes técnicos e stack tecnológico |

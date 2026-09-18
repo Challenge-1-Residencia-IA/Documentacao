@@ -1,5 +1,8 @@
 # Requisitos
 
+!!! note "Como esses requisitos foram levantados"
+    Ver [Levantamento de requisitos](levantamento-de-requisitos.md) para as técnicas usadas até aqui (revisão bibliográfica, brainstorming interno) e as recomendadas para validar essas hipóteses com o público real.
+
 ## Requisitos funcionais
 
 | ID | Descrição |
