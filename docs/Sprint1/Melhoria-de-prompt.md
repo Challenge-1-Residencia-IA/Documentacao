@@ -1,7 +1,7 @@
 📄 Documentação — Melhoria do Prompt (Detecção de Sátira)
 
 Data: 18/09/2026
-Responsável: Pessoa 3
+Responsável: Larissa
 Sprint: Sprint 1 — Fundação Técnica
 Status: ✅ Concluído
 
@@ -66,5 +66,5 @@ Sátiras que imitam notícias reais podem ser mais difíceis de detectar
 Testar o prompt melhorado com outros tipos de sátira
 Documentar outros casos que o modelo não conseguiu identificar
 Refinar o prompt conforme necessário
-Documentação criada por: Pessoa 3
-Revisada por: (a preencher)
+Documentação criada por: Larissa
+Revisada por: Larissa
