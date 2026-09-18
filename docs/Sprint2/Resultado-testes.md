@@ -1,4 +1,4 @@
-📄 Documentação — Resultados dos Testes (Pessoa 3)
+📄 Documentação — Resultados dos Testes - Larissa
 
 Data: 18/09/2026
 Responsável: Larissa
