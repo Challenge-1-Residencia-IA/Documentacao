@@ -15,6 +15,3 @@ A Fase 1 do roadmap (ver [Roadmap e cronograma](roadmap.md)) previu explicitamen
 Após o brainstorming interno, foi realizada uma etapa formal de elicitação de requisitos por meio de entrevistas com os gestores do projeto. As entrevistas buscaram levantar necessidades, expectativas, restrições e prioridades relacionadas ao sistema.
 
 A partir das informações coletadas, foram consolidados e formalizados os **requisitos funcionais (RFs)** e **requisitos não funcionais (RNFs)** apresentados na página [Requisitos](requisitos.md).
-
-!!! warning "Limitação"
-    Nenhuma das técnicas usadas até aqui envolveu diretamente usuários externos ao time. Os requisitos funcionais e não funcionais (ver [Requisitos](requisitos.md)) e os três perfis de público-alvo (ver [Público-alvo](publico-alvo.md)) são, portanto, hipóteses fundamentadas em literatura e no conhecimento da equipe — ainda não validadas com o público real do sistema.
