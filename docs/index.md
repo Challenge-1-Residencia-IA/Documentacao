@@ -23,6 +23,7 @@ A pergunta que guia todo o projeto é:
 | [Casos de uso](casos-de-uso.md) | Cenários de uso do sistema |
 | [Requisitos](requisitos.md) | Requisitos funcionais e não funcionais |
 | [Levantamento de requisitos](levantamento-de-requisitos.md) | Técnicas usadas para levantar os requisitos e o público-alvo |
+| [Histórias de usuário](historias-de-usuario.md) | Histórias derivadas dos requisitos, prontas para o backlog |
 | [Fluxo e interação](fluxo-e-interacao.md) | Como a conversa acontece do início ao fim |
 | [Fontes e evidências](fontes-e-evidencias.md) | Como o sistema busca, compara e avalia evidências |
 | [Arquitetura](arquitetura.md) | Componentes técnicos e stack tecnológico |
