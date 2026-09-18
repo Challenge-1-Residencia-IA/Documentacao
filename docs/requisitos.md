@@ -1,5 +1,8 @@
 # Requisitos
 
+!!! note "Como esses requisitos foram levantados"
+    Ver [Levantamento de requisitos](levantamento-de-requisitos.md) para as técnicas usadas até aqui (revisão bibliográfica, brainstorming interno).
+
 ## Requisitos funcionais
 
 | ID | Descrição |
@@ -22,6 +25,12 @@
 | RF16 | O sistema deve diferenciar ausência de evidências de evidências de falsidade. |
 | RF17 | O sistema deve considerar a data das fontes quando o contexto temporal for relevante. |
 | RF18 | O sistema deve identificar possíveis relações entre fontes quando existirem evidências suficientes. |
+| RF19 | O sistema deve priorizar fontes primárias e instituições especializadas na apresentação de evidências, quando disponíveis. |
+| RF20 | O sistema deve manter as respostas intencionalmente incompletas em detalhes, incentivando o usuário a abrir as fontes primárias listadas para compreender o quadro completo. |
+| RF21 | O sistema não deve apresentar fontes, citações ou evidências que não estejam de fato presentes no material recuperado. |
+| RF22 | O sistema deve adaptar o nível de detalhamento das explicações ao histórico de uso do usuário, reduzindo-o gradualmente conforme a experiência aumenta. |
+| RF23 | O sistema deve tratar todo o conteúdo obtido de fontes externas como dado a ser analisado, nunca como instrução para o modelo de IA. |
+| RF24 | O sistema deve utilizar linguagem neutra e não confrontativa, sem atribuir intenção ao usuário, nas respostas geradas. |
 
 ## Requisitos não funcionais
 
