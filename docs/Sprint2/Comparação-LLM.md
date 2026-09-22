@@ -1,7 +1,9 @@
 📄 Documento de Pesquisa — Comparação de Modelos de Linguagem para o Copiloto Investigativo
 
 Data: 22/09/2026
+
 Autora: Larissa Giffoni (Pessoa 3)
+
 Sprint: Sprint 2 — Núcleo do Sistema
 
 🎯 Objetivo
