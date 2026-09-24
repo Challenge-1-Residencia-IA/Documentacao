@@ -1,8 +1,11 @@
 📄 Documentação — Teste Comparativo: Qwen 2.5 3B vs 7B
 
 Data: 24/09/2026
+
 Responsável: Larissa Giffoni (Pessoa 3)
+
 Sprint: Sprint 2 — Núcleo do Sistema
+
 Status: ✅ Concluído
 
 🎯 Objetivo
@@ -75,8 +78,12 @@ Se no futuro for necessário um modelo mais leve, testar o Llama 3.1 8B ou Qwen 
 📎 Próximos Passos
 
 Reverter o código para o modelo de 7B.
+
 Testar o Qwen 2.5 7B com outras mensagens (sátira, opinião, fora de contexto).
+
 Documentar os resultados no Trello.
+
 Documentação criada por: Larissa Giffoni
-Revisada por: (a preencher)
+
+Revisada por: Larissa Giffoni
 
