@@ -65,16 +65,23 @@ O modelo Qwen 2.5 3B não é adequado para o projeto.
 Embora seja mais rápido e use menos memória, ele:
 
 Não classifica corretamente
+
 Ignora as evidências da busca
+
 Se perde no formato de resposta
+
 Inventa informações (alucinação)
+
 Para uma ferramenta de alfabetização midiática, a precisão é mais importante que a velocidade. O Qwen 2.5 7B é o mínimo necessário para garantir a qualidade da análise.
 
 📌 Recomendação
 
 Manter o Qwen 2.5 7B como modelo oficial do projeto.
+
 Não usar modelos abaixo de 7B para tarefas de análise crítica.
+
 Se no futuro for necessário um modelo mais leve, testar o Llama 3.1 8B ou Qwen 2.5 14B (se o hardware permitir).
+
 📎 Próximos Passos
 
 Reverter o código para o modelo de 7B.
