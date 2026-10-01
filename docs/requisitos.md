@@ -40,7 +40,7 @@
 | RNF02 | Segurança | O sistema deve ter mecanismos contra abuso e manipulação das entradas. |
 | RNF03 | Transparência | As principais fontes utilizadas devem ser apresentadas ao usuário. |
 | RNF04 | Usabilidade | A interação deve ser compreensível para usuários sem conhecimento técnico. |
-| RNF05 | Acessibilidade | As respostas devem ser adequadas ao formato conversacional do Telegram. |
+| RNF05 | Acessibilidade | As respostas devem ser adequadas ao formato conversacional do bot, com mensagens curtas e progressivas. |
 | RNF06 | Desempenho | O sistema deve apresentar respostas em tempo aceitável, considerando que a análise depende de serviços externos. |
 | RNF07 | Confiabilidade | Falhas de serviços externos não devem resultar em respostas apresentadas como conclusões confiáveis. |
 | RNF08 | Rastreabilidade | As evidências utilizadas na geração de uma resposta devem poder ser identificadas. |

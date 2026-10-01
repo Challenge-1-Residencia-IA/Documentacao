@@ -58,7 +58,7 @@ flowchart TD
     F --> G[Saída estruturada]
 ```
 
-Somente após a validação desse fluxo a integração completa com o Telegram deve ser priorizada.
+Somente após a validação desse fluxo a integração completa do bot com a plataforma de mensagens deve ser priorizada.
 
 A pergunta que essa etapa precisa responder é:
 

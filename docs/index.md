@@ -6,7 +6,7 @@ Este site é gerado com [MkDocs](https://www.mkdocs.org/) a partir dos arquivos 
 
 ## Sobre o projeto
 
-O projeto propõe um sistema conversacional integrado ao **Telegram** capaz de ajudar usuários a avaliar a confiabilidade de informações recebidas por mensagens, links e outros conteúdos digitais. O sistema usa IA, busca de informações e análise de fontes para investigar afirmações, mas **não decide pelo usuário**: ele apresenta evidências, fontes, contexto e limitações, e devolve a decisão final para quem está do outro lado da conversa.
+O projeto propõe um **bot** conversacional capaz de ajudar usuários a avaliar a confiabilidade de informações recebidas por mensagens, links e outros conteúdos digitais. O sistema usa IA, busca de informações e análise de fontes para investigar afirmações, mas **não decide pelo usuário**: ele apresenta evidências, fontes, contexto e limitações, e devolve a decisão final para quem está do outro lado da conversa.
 
 A pergunta que guia todo o projeto é:
 

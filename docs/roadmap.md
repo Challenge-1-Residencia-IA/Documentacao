@@ -22,13 +22,13 @@
 ### Fase 3: Protótipo
 
 - fluxo conversacional;
-- protótipo do Telegram;
+- protótipo do bot;
 - estrutura das respostas;
 - testes de UX.
 
 ### Fase 4: MVP
 
-- integração com Telegram;
+- integração do bot com a plataforma de mensagens;
 - processamento de mensagens;
 - busca;
 - análise;
@@ -55,20 +55,20 @@
 Após a definição do escopo do MVP e dos principais requisitos, a próxima etapa é a investigação e validação das tecnologias necessárias para a implementação. O objetivo inicial não é desenvolver todo o sistema, mas validar tecnicamente os componentes fundamentais e identificar limitações antes da implementação definitiva.
 
 1. **Definição da arquitetura**: estabelecer como os principais componentes se comunicam (ver [Arquitetura](arquitetura.md)).
-2. **Integração com o Telegram**: investigar a API oficial do Telegram (Telegram Bot API), considerando recebimento e envio de mensagens, uso de webhooks (registrados via `setWebhook`), envio de textos e links, limitações da API, custos e requisitos de utilização, identificação e gerenciamento das conversas.
+2. **Integração com a plataforma de mensagens**: investigar a API de bots da plataforma escolhida, considerando recebimento e envio de mensagens, uso de webhooks, envio de textos e links, limitações da API, custos e requisitos de utilização, identificação e gerenciamento das conversas.
 3. **Pipeline de processamento da informação**: desenvolver um primeiro protótipo capaz de transformar uma mensagem em informações estruturadas (ver [Pipeline de IA](pipeline-ia.md)).
 4. **Busca e avaliação de fontes**: investigar APIs de busca, extração de conteúdo das páginas, identificação da fonte original, data da informação, relevância e qualidade da fonte, e mecanismos para reduzir o risco de a IA gerar ou atribuir evidências que não existem.
 5. **Modelo de evidências**: definir a estrutura de dados usada para representar cada evidência (ver [Pipeline de IA](pipeline-ia.md)).
-6. **Prova de conceito**: validar o núcleo do sistema antes de integrar com o Telegram (ver [Pipeline de IA](pipeline-ia.md)).
+6. **Prova de conceito**: validar o núcleo do sistema antes de integrar o bot à plataforma de mensagens (ver [Pipeline de IA](pipeline-ia.md)).
 7. **Dataset inicial para testes**: montar o conjunto inicial de mensagens de teste (ver [Testes](testes.md)).
 
-Ao final dessa fase, a equipe deve ter: uma arquitetura técnica inicial, as tecnologias candidatas definidas, uma estratégia de integração com o Telegram, um pipeline inicial de análise, um modelo estruturado para evidências e fontes, um POC funcional do núcleo do sistema e um dataset inicial para testes.
+Ao final dessa fase, a equipe deve ter: uma arquitetura técnica inicial, as tecnologias candidatas definidas, uma estratégia de integração com a plataforma de mensagens, um pipeline inicial de análise, um modelo estruturado para evidências e fontes, um POC funcional do núcleo do sistema e um dataset inicial para testes.
 
 ## Plano de desenvolvimento do MVP
 
 ### Escopo
 
-A proposta é desenvolver uma versão simplificada do pipeline de verificação de informações utilizado pelo Sift, adaptada às necessidades do projeto. O objetivo não é reproduzir toda a infraestrutura do Sift, mas implementar o núcleo necessário para que o sistema consiga identificar afirmações, classificá-las, buscar fontes, extrair conteúdo, comparar evidências, identificar divergências, gerar uma síntese educativa, apontar limitações e entregar o resultado no Telegram.
+A proposta é desenvolver uma versão simplificada do pipeline de verificação de informações utilizado pelo Sift, adaptada às necessidades do projeto. O objetivo não é reproduzir toda a infraestrutura do Sift, mas implementar o núcleo necessário para que o sistema consiga identificar afirmações, classificá-las, buscar fontes, extrair conteúdo, comparar evidências, identificar divergências, gerar uma síntese educativa, apontar limitações e entregar o resultado ao usuário pelo bot.
 
 O prazo estimado para o MVP é de 8 semanas, organizado para que as diferentes partes do sistema sejam desenvolvidas em paralelo por 4 pessoas.
 
@@ -77,7 +77,7 @@ O prazo estimado para o MVP é de 8 semanas, organizado para que as diferentes p
 
 ### Semanas 1 e 2: fundação e pipeline mínimo
 
-**Objetivo**: ter o pipeline básico funcionando localmente, ainda sem integração com o Telegram.
+**Objetivo**: ter o pipeline básico funcionando localmente, ainda sem integração com a plataforma de mensagens.
 
 | Papel | Atividades |
 |---|---|
@@ -101,18 +101,18 @@ O prazo estimado para o MVP é de 8 semanas, organizado para que as diferentes p
 
 **Marco da etapa**: o pipeline funciona de ponta a ponta localmente e gera uma análise estruturada em português, sem apresentar conclusão absoluta quando as evidências não permitem esse nível de certeza.
 
-### Semanas 5 e 6: integração com o Telegram
+### Semanas 5 e 6: integração do bot com a plataforma de mensagens
 
-**Objetivo**: integrar o pipeline ao Telegram e implementar a camada conversacional.
+**Objetivo**: integrar o pipeline à plataforma de mensagens e implementar a camada conversacional do bot.
 
 | Papel | Atividades |
 |---|---|
-| Pessoa 1: IA e conversação | Agente de identificação de intenção do usuário (nova análise, pedido de explicação, contestação, envio de nova fonte); prompt de adaptação da análise ao formato do Telegram, dividindo a resposta em mensagens menores e usando indicadores visuais para os níveis de evidência. |
-| Pessoa 2: Backend e Telegram | Criar o webhook em FastAPI; implementar `POST /webhook` para recebimento de mensagens, com o endpoint registrado via chamada `setWebhook` da Telegram Bot API; configurar o Ngrok para testes; implementar o envio das respostas, suportando mensagens progressivas e links das fontes utilizadas. |
-| Pessoa 3: Orquestração | Integrar o webhook ao LangGraph, fazendo o grafo receber diretamente as mensagens do Telegram; implementar o estado da conversa, mantendo contexto entre mensagens; implementar o fluxo de recebimento de novas fontes enviadas pelo usuário, atualizando a análise. |
-| Pessoa 4: Produto e testes | Testar o fluxo completo diretamente pelo Telegram; avaliar clareza das respostas, tamanho das mensagens e tom utilizado; ajustar a estrutura das mensagens com base nos testes. |
+| Pessoa 1: IA e conversação | Agente de identificação de intenção do usuário (nova análise, pedido de explicação, contestação, envio de nova fonte); prompt de adaptação da análise ao formato de mensagens do bot, dividindo a resposta em mensagens menores e usando indicadores visuais para os níveis de evidência. |
+| Pessoa 2: Backend e integração | Criar o webhook em FastAPI; implementar `POST /webhook` para recebimento de mensagens, com o endpoint registrado na API de bots da plataforma escolhida; configurar o Ngrok para testes; implementar o envio das respostas, suportando mensagens progressivas e links das fontes utilizadas. |
+| Pessoa 3: Orquestração | Integrar o webhook ao LangGraph, fazendo o grafo receber diretamente as mensagens enviadas ao bot; implementar o estado da conversa, mantendo contexto entre mensagens; implementar o fluxo de recebimento de novas fontes enviadas pelo usuário, atualizando a análise. |
+| Pessoa 4: Produto e testes | Testar o fluxo completo diretamente pelo bot; avaliar clareza das respostas, tamanho das mensagens e tom utilizado; ajustar a estrutura das mensagens com base nos testes. |
 
-**Marco da etapa**: um usuário consegue enviar uma mensagem pelo Telegram e receber uma análise completa em português, com evidências e limitações.
+**Marco da etapa**: um usuário consegue enviar uma mensagem ao bot e receber uma análise completa em português, com evidências e limitações.
 
 ### Semanas 7 e 8: robustez, avaliação e ajustes finais
 
@@ -133,7 +133,7 @@ O prazo estimado para o MVP é de 8 semanas, organizado para que as diferentes p
 |---|---|---|---|---|
 | Semanas 1-2 | Extração e classificação | Tavily e scraping | PostgreSQL, embeddings e LangGraph | Dataset e formato de saída |
 | Semanas 3-4 | Comparação e síntese | Modelo de evidências e crítica | LangGraph completo | Dataset e documentação de falhas |
-| Semanas 5-6 | Conversação e adaptação | Webhook e Telegram | Integração e estado | Testes e clareza |
+| Semanas 5-6 | Conversação e adaptação | Webhook e integração | Integração e estado | Testes e clareza |
 | Semanas 7-8 | Segurança e robustez | Privacidade e logs | UX e níveis de evidência | Avaliação e relatório |
 
 A divisão acima serve como ponto de partida. As tarefas podem ser redistribuídas conforme a experiência de cada integrante e as dificuldades encontradas durante o desenvolvimento.
@@ -142,7 +142,7 @@ Os riscos identificados para esse cronograma estão detalhados em [Riscos](risco
 
 ### Resultado esperado
 
-Ao final do desenvolvimento, espera-se ter um sistema capaz de receber uma informação pelo Telegram, identificar quais partes podem ser verificadas, buscar evidências externas, analisar essas evidências e apresentar o resultado de forma educativa. O sistema deve priorizar a apresentação das evidências e das limitações da análise, evitando tratar a resposta como um simples veredito de "verdadeiro" ou "falso".
+Ao final do desenvolvimento, espera-se ter um sistema capaz de receber uma informação pelo bot, identificar quais partes podem ser verificadas, buscar evidências externas, analisar essas evidências e apresentar o resultado de forma educativa. O sistema deve priorizar a apresentação das evidências e das limitações da análise, evitando tratar a resposta como um simples veredito de "verdadeiro" ou "falso".
 
 A construção própria do pipeline também permite que a equipe tenha controle sobre os prompts, sobre o formato das respostas e sobre a forma como a análise é apresentada em português. Além disso, a arquitetura proposta mantém os principais componentes desacoplados, permitindo substituir tecnologias ou serviços no futuro sem precisar reconstruir todo o sistema.
 
@@ -159,4 +159,4 @@ Antes de começar o desenvolvimento, a equipe deve definir:
 - estrutura inicial do repositório;
 - forma de comunicação e acompanhamento das tarefas.
 
-**Primeira entrega**: deve ser pequena e funcional. Dado um texto, o sistema deve identificar suas afirmações e retornar evidências relevantes encontradas na web. A partir disso, as próximas etapas adicionam comparação, síntese, crítica e integração com o Telegram. O foco inicial deve ser fazer esse fluxo funcionar de forma confiável antes de adicionar novas funcionalidades.
+**Primeira entrega**: deve ser pequena e funcional. Dado um texto, o sistema deve identificar suas afirmações e retornar evidências relevantes encontradas na web. A partir disso, as próximas etapas adicionam comparação, síntese, crítica e integração com a plataforma de mensagens. O foco inicial deve ser fazer esse fluxo funcionar de forma confiável antes de adicionar novas funcionalidades.

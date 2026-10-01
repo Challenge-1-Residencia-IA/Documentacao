@@ -105,9 +105,9 @@ O sistema pode usar perguntas para estimular o pensamento crítico, por exemplo:
 
 Essas perguntas não devem transformar a experiência em um questionário longo. A quantidade de interação deve se adaptar ao contexto.
 
-## Interface conversacional no Telegram
+## Interface conversacional do bot
 
-Como o sistema é usado pelo Telegram, a experiência deve ser pensada para mensagens curtas e progressivas, evitando respostas excessivamente longas logo na primeira mensagem. Um fluxo possível:
+Como o sistema é usado como um bot de mensagens, a experiência deve ser pensada para mensagens curtas e progressivas, evitando respostas excessivamente longas logo na primeira mensagem. Um fluxo possível:
 
 ```
 🔎 Encontrei 2 afirmações verificáveis.

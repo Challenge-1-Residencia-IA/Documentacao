@@ -2,7 +2,7 @@
 
 ## Contexto
 
-Este projeto propõe o desenvolvimento de um sistema conversacional integrado ao Telegram capaz de auxiliar usuários na avaliação da confiabilidade de informações recebidas por meio de mensagens, links e outros conteúdos digitais.
+Este projeto propõe o desenvolvimento de um bot conversacional capaz de auxiliar usuários na avaliação da confiabilidade de informações recebidas por meio de mensagens, links e outros conteúdos digitais.
 
 O sistema utiliza técnicas de inteligência artificial, processamento de linguagem natural, recuperação de informações e análise de fontes para investigar afirmações presentes nas mensagens enviadas pelos usuários.
 
@@ -49,7 +49,7 @@ Assim, o projeto considera que uma boa ferramenta de apoio à verificação deve
 
 ## Objetivo geral
 
-Desenvolver e avaliar um sistema conversacional baseado em IA, integrado ao Telegram, capaz de auxiliar usuários na avaliação da confiabilidade de informações por meio da identificação de afirmações, busca e comparação de evidências, apresentação de fontes e explicação das limitações da análise, preservando a autonomia e o pensamento crítico do usuário.
+Desenvolver e avaliar um bot conversacional baseado em IA, capaz de auxiliar usuários na avaliação da confiabilidade de informações por meio da identificação de afirmações, busca e comparação de evidências, apresentação de fontes e explicação das limitações da análise, preservando a autonomia e o pensamento crítico do usuário.
 
 ## Objetivos específicos
 

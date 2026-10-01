@@ -60,7 +60,7 @@ Conteúdo externo pode tentar manipular o comportamento da IA.
 
 | Risco | Probabilidade | Mitigação |
 |---|---|---|
-| Atraso na integração com Telegram | Alta | Iniciar o webhook o quanto antes e manter uma alternativa caso a integração apresente problemas |
+| Atraso na integração com a plataforma de mensagens | Alta | Iniciar o webhook o quanto antes e manter uma alternativa caso a integração apresente problemas |
 | Qualidade das evidências da Tavily | Média | Testar consultas reais no início do projeto e avaliar alternativas caso necessário |
 | Limites dos LLMs gratuitos | Média | Manter alternativas de provedores disponíveis |
 | Pipeline muito lento | Média | Reduzir a quantidade de fontes analisadas caso necessário |
