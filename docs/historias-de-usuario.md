@@ -17,7 +17,7 @@ Nas histórias que dependem do modelo, o critério de aceite não é "sempre ace
 ### Requisitos que não viram histórias próprias
 
 - **Guardrails, fidelidade e qualidades da resposta** (GR-01 a GR-06, IA-06, RNF-04 a RNF-06): são restrições sobre toda resposta, não algo que o usuário pede. Aplicando o critério *Valuable* do INVEST, viram **critérios de aceite transversais** (ver [Critérios transversais](#criterios-transversais)).
-- **Dados, operação e qualidade interna** (RD, OP, RNF-02, RNF-07 a RNF-09): são trabalho necessário que não entrega valor direto ao usuário. Viram **histórias habilitadoras** (*enabler stories*, conceito do SAFe), escritas do ponto de vista do time (ver [Histórias habilitadoras](#historias-habilitadoras)).
+- **Dados, operação, arquitetura e qualidade interna** (RD, OP, RNF-02, RNF-07 a RNF-09): são trabalho necessário que não entrega valor direto ao usuário. Viram **histórias habilitadoras** (*enabler stories*, conceito do SAFe), escritas do ponto de vista do time (ver [Histórias habilitadoras](#historias-habilitadoras)).
 
 ### Personas
 
@@ -180,9 +180,14 @@ A persona aparece na história só quando muda o benefício ou o critério de ac
 
 ## Histórias habilitadoras
 
-Trabalho do time que não entrega valor direto ao usuário, mas sem o qual as histórias acima não podem ser aceitas.
+Trabalho do time que não entrega valor direto ao usuário, mas sem o qual as histórias acima não podem ser aceitas. Seguindo o SAFe, elas se dividem em dois grupos:
 
-### EN01 — Montar o golden set v1
+- **Dados e operação** (EN01 a EN08): conjuntos de avaliação, base de evidências, versionamento, monitoramento e proteção.
+- **Arquitetura** (EN09 a EN13): a base técnica (*architectural runway*) de que as histórias dependem. As histórias de resposta (US04 a US16) dependem da EN09 e da EN11; as de fontes (US09 a US13), também da EN10 e da EN12.
+
+### Dados e operação
+
+#### EN01 — Montar o golden set v1
 **Requisitos**: OB-02, RD-05, critérios de aceitação
 
 **Como** time do projeto, **precisamos de** um conjunto de avaliação fixo e anotado, **para** medir os comportamentos da IA e comparar versões.
@@ -191,7 +196,7 @@ Trabalho do time que não entrega valor direto ao usuário, mas sem o qual as hi
 - Cada item é anotado por duas pessoas, e a concordância (kappa de Cohen) é registrada.
 - Nenhum item do golden set é usado como exemplo de few-shot nem indexado na base.
 
-### EN02 — Medir a linha de base e definir os limiares
+#### EN02 — Medir a linha de base e definir os limiares
 **Requisitos**: OB-02
 
 **Como** time do projeto, **precisamos** medir o desempenho atual no golden set v1, **para** definir os limiares dos requisitos de IA com base em dados.
@@ -199,14 +204,14 @@ Trabalho do time que não entrega valor direto ao usuário, mas sem o qual as hi
 - As métricas de IA-01 a IA-08 são medidas e registradas com a versão do golden set.
 - Os limiares são definidos e publicados em [Requisitos](requisitos.md).
 
-### EN03 — Montar o conjunto adversarial
+#### EN03 — Montar o conjunto adversarial
 **Requisitos**: GR-01 a GR-06, RNF-08
 
 **Como** time do projeto, **precisamos de** mensagens feitas para provocar falhas, **para** verificar os guardrails e a robustez.
 
 - O conjunto inclui prompt injection, sátira, temas de risco, entradas fora do escopo e variações de escrita (sem acento, caixa alta, erros de digitação).
 
-### EN04 — Construir a base de evidências
+#### EN04 — Construir a base de evidências
 **Requisitos**: RD-01, RD-02, RD-03
 
 **Como** time do projeto, **precisamos de** uma base de checagens e fontes com escopo e regras de atualização, **para** que a busca encontre evidências confiáveis e atuais.
@@ -215,14 +220,14 @@ Trabalho do time que não entrega valor direto ao usuário, mas sem o qual as hi
 - Cada documento registra URL, veículo, data de publicação e data de coleta, sem sobrescrever versões anteriores.
 - A frequência de atualização e a validade por tipo de afirmação estão definidas.
 
-### EN05 — Documentar os datasets
+#### EN05 — Documentar os datasets
 **Requisitos**: RD-04
 
 **Como** time do projeto, **precisamos de** um datasheet para cada dataset usado, **para** conhecer origem, licença e limitações antes de usá-lo.
 
 - Cada datasheet registra origem, composição, licença e limitações conhecidas.
 
-### EN06 — Versionar, promover e voltar versões
+#### EN06 — Versionar, promover e voltar versões
 **Requisitos**: OP-01, OP-02, RNF-07
 
 **Como** time do projeto, **precisamos** versionar prompt, configuração, modelo e base, **para** só colocar em uso versões que não pioram os resultados e poder voltar atrás.
@@ -231,20 +236,73 @@ Trabalho do time que não entrega valor direto ao usuário, mas sem o qual as hi
 - Uma versão nova só entra em uso se igualar ou superar os resultados no golden set e não violar nenhum guardrail.
 - Voltar para a versão anterior não exige retrabalho.
 
-### EN07 — Monitorar o bot em produção
+#### EN07 — Monitorar o bot em produção
 **Requisitos**: OP-03
 
 **Como** time do projeto, **precisamos** acompanhar o bot em produção, **para** perceber quando o comportamento muda.
 
 - Latência, custo, proporção de respostas "sem evidência suficiente", feedback e temas recebidos são acompanhados, com valores que disparam reavaliação.
 
-### EN08 — Proteger o bot contra abuso
+#### EN08 — Proteger o bot contra abuso
 **Requisitos**: RNF-02, RNF-09
 
 **Como** time do projeto, **precisamos** limitar requisições e validar entradas, com componentes substituíveis, **para** manter o bot disponível e fácil de evoluir.
 
 - Há limite de requisições por usuário e validação das entradas antes do processamento.
 - Modelo, serviço de busca e base podem ser trocados sem reescrever o pipeline.
+
+### Arquitetura
+
+#### EN09 — Montar o esqueleto ponta a ponta
+**Requisitos**: RC-01, RC-03, RNF-09
+
+**Como** time do projeto, **precisamos de** um caminho completo da mensagem recebida à resposta enviada, com as etapas ainda simplificadas, **para** integrar e testar cada parte do pipeline desde o início (*walking skeleton*, Alistair Cockburn).
+
+- Dado que uma mensagem chega pelo webhook, quando o pipeline executa, então ela passa por todas as etapas do grafo descritas em [Arquitetura](arquitetura.md), mesmo que simplificadas, e uma resposta volta ao usuário.
+- Dado que o usuário envia uma segunda mensagem, quando o pipeline executa, então o estado da conversa anterior está disponível.
+- Cada etapa pode ser substituída pela implementação real sem alterar as demais.
+- Um teste automatizado percorre o caminho completo, e o pipeline sobe localmente com os comandos documentados no repositório.
+
+#### EN10 — Montar o banco vetorial e a indexação
+**Requisitos**: RD-01, RD-02, RD-03, RNF-09
+
+**Como** time do projeto, **precisamos** armazenar e indexar a base de evidências para busca por similaridade, **para** que o bot encontre checagens já publicadas antes de recorrer à web. A EN04 define o conteúdo da base; esta história define onde ele fica e como é consultado.
+
+- O banco (PostgreSQL com pgvector) sobe localmente com um comando documentado.
+- Cada documento guarda texto, vetor, URL, veículo, data de publicação, data de coleta e versão da base.
+- A ingestão pode ser reexecutada sem duplicar documentos, e atualizações são acrescentadas sem sobrescrever as anteriores.
+- O modelo de vetorização é escolhido pela recuperação medida nos pares boato → checagem e fica registrado junto com a versão do índice.
+- Textos de desinformação não são indexados como evidência.
+
+#### EN11 — Disponibilizar o modelo de linguagem
+**Requisitos**: RNF-05, RNF-06, RNF-09, OP-01
+
+**Como** time do projeto, **precisamos de** um modelo de linguagem acessível pelo pipeline, local e em produção, **para** executar as etapas que dependem dele.
+
+- O pipeline acessa o modelo por uma interface única, e trocar de modelo ou de fornecedor é uma mudança de configuração.
+- O modelo roda localmente com instruções documentadas.
+- O ambiente de execução em produção está definido, com latência e custo medidos em relação aos limiares de RNF-05.
+- Dado que o modelo falha ou excede o tempo limite, quando a análise está em andamento, então a falha é comunicada ao usuário e não gera conclusão.
+
+#### EN12 — Integrar a busca na web
+**Requisitos**: IA-03, RD-03, RNF-06, RNF-09
+
+**Como** time do projeto, **precisamos** integrar um serviço de busca na web, **para** encontrar fontes quando a base de checagens não tem a resposta.
+
+- Dado que existe checagem relevante na base, quando o bot busca fontes, então a base é consultada primeiro; a web só é usada quando a base não basta.
+- Dado que a afirmação é sensível ao tempo, quando o bot busca fontes, então a busca na web sempre é feita.
+- O serviço de busca é acessado por uma interface substituível.
+- O consumo da cota do serviço é acompanhado, com limite que impede ultrapassar o plano contratado.
+- Dado que o serviço está indisponível ou sem cota, quando o bot busca fontes, então a falha é comunicada e não gera conclusão.
+
+#### EN13 — Configurar a integração contínua
+**Requisitos**: OP-01, OP-02
+
+**Como** time do projeto, **precisamos** verificar automaticamente cada mudança no código, **para** detectar erros antes que cheguem à `main` e servir de base para a promoção de versões da EN06.
+
+- A cada push e pull request, os testes e a verificação de estilo rodam nos repositórios de código (GitHub Actions).
+- Um pull request com falha não pode ser mesclado na `main`.
+- Quando prompt, configuração ou modelo mudam, a avaliação no golden set roda no pipeline e o resultado fica registrado.
 
 ---
 
@@ -270,7 +328,7 @@ Valem para **todas** as histórias que geram resposta ao usuário (US04 a US16).
 | Tipo | Quantidade | Requisitos cobertos |
 |---|---|---|
 | Histórias de usuário | 17 | RC-01 a RC-05, IA-01 a IA-05, IA-07, IA-08, RNF-01, RNF-03 |
-| Histórias habilitadoras | 8 | OB-02, RD-01 a RD-05, OP-01 a OP-03, RNF-02, RNF-07 a RNF-09, GR (via conjunto adversarial) |
+| Histórias habilitadoras | 13 | OB-02, RD-01 a RD-05, OP-01 a OP-03, RNF-02, RNF-07 a RNF-09, GR (via conjunto adversarial); as de arquitetura também sustentam RC-01, RC-03, IA-03, RNF-05 e RNF-06 |
 | Critérios transversais | 10 | GR-01 a GR-06, IA-06, RNF-04 a RNF-06 |
 
 OB-01 é o objetivo do produto e orienta todas as histórias.
