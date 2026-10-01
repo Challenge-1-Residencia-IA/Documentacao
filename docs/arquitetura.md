@@ -38,7 +38,7 @@ Esses recursos podem ser considerados em versões futuras.
 
 ```mermaid
 flowchart TD
-    TG[Telegram] --> API[API / Backend]
+    TG[Plataforma de mensagens] --> API[API / Backend]
     API --> DB[(Banco de dados)]
     API --> PROC[Processamento]
     PROC --> MODELO[Modelo de IA]
@@ -59,7 +59,7 @@ A arquitetura tecnológica específica é detalhada na seção de stack tecnoló
 
 ```mermaid
 flowchart TD
-    TG[Telegram] --> WH[Webhook - FastAPI]
+    TG[Plataforma de mensagens] --> WH[Webhook - FastAPI]
     WH --> ORQ[Agente Orquestrador - LangGraph]
     ORQ --> P1[1. Extração de afirmações]
     P1 --> P2[2. Classificação]
@@ -83,7 +83,7 @@ flowchart TD
 | Embeddings | Colibri ou multilingual-e5-small |
 | Banco vetorial | PostgreSQL + pgvector |
 | Backend | FastAPI |
-| Telegram | Telegram Bot API |
+| Canal do bot | A definir (API de bots da plataforma de mensagens escolhida) |
 | Ambiente de testes | Ngrok |
 | Extração de conteúdo | trafilatura ou BeautifulSoup |
 

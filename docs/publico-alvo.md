@@ -2,7 +2,7 @@
 
 O público inicial deve ser definido com base em pesquisas e testes com usuários. Ainda assim, alguns perfis podem ser considerados hipóteses iniciais para orientar o design do produto.
 
-## Usuários que recebem informações frequentemente pelo Telegram
+## Usuários que recebem informações frequentemente por aplicativos de mensagens
 
 São pessoas que recebem mensagens encaminhadas, links e conteúdos de familiares, amigos, grupos e comunidades.
 

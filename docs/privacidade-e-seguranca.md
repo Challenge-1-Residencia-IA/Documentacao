@@ -2,7 +2,7 @@
 
 ## Privacidade
 
-Como o sistema é integrado ao Telegram, a privacidade deve ser considerada desde o início do projeto. Perguntas fundamentais que precisam de resposta:
+Como o bot recebe mensagens enviadas pelos usuários, a privacidade deve ser considerada desde o início do projeto. Perguntas fundamentais que precisam de resposta:
 
 - Quais dados precisam ser armazenados?
 - Por quanto tempo?
