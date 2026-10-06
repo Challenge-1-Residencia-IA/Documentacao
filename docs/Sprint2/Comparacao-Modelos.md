@@ -52,7 +52,7 @@ Ou seja, o Qwen 3B está "trapaceando" nas métricas: ele copia a estrutura do g
 
 Critério	                   Qwen 2.5 7B	Qwen 2.5 3B. 	Llama 3.1 8B
 
-Entendeu a mensagem original?	✅ Sim	   ⚠️ Parcial	      ❌ Não
+Entendeu a mensagem original?	-✅ Sim	   -⚠️ Parcial	      -❌ Não
 
 Seguiu o formato?           	✅ Sim	   ⚠️ Só o formato	❌ Não
 
