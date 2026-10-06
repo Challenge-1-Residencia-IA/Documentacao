@@ -192,8 +192,10 @@ Trabalho do time que não entrega valor direto ao usuário, mas sem o qual as hi
 
 **Como** time do projeto, **precisamos de** um conjunto de avaliação fixo e anotado, **para** medir os comportamentos da IA e comparar versões.
 
-- O conjunto inclui boatos reais (uma mensagem por checagem, sem quase-duplicatas), as mensagens de teste da Sprint 1, artigos completos e os casos de [Testes](testes.md).
-- Cada item é anotado por duas pessoas, e a concordância (kappa de Cohen) é registrada.
+- O conjunto tem cerca de 60 itens: cerca de 50 boatos reais (uma mensagem por checagem, sem quase-duplicatas) e cerca de 10 casos para situações que os datasets não cobrem (sátira, opinião, previsão, fora de contexto, temas de risco), escritos pelo time ou vindos das mensagens de teste da Sprint 1 e dos casos de [Testes](testes.md). Artigos completos ficam para a versão seguinte.
+- A natureza das afirmações segue a taxonomia de [Fluxo e interação](fluxo-e-interacao.md#classificacao-das-informacoes), e a fonte esperada de cada boato é a checagem publicada sobre ele.
+- Uma amostra de cerca de 20 itens é anotada por duas pessoas, de forma independente, e a concordância (kappa de Cohen) é registrada; os demais itens têm um anotador, com revisão dos casos duvidosos.
+- A anotação é feita por pessoas, não por modelos de linguagem.
 - Nenhum item do golden set é usado como exemplo de few-shot nem indexado na base.
 
 #### EN02 — Medir a linha de base e definir os limiares

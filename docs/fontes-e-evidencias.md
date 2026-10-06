@@ -20,9 +20,13 @@ O sistema considera a natureza e a relação da fonte com a afirmação. Essa hi
 |---|---|---|
 | 1 | Fontes primárias | Documentos oficiais, legislação, artigos científicos originais, bancos de dados, relatórios, declarações originais, documentos institucionais |
 | 2 | Instituições especializadas | Universidades, instituições de pesquisa, organizações profissionais, órgãos especializados |
-| 3 | Veículos jornalísticos | Veículos com histórico e processos editoriais identificáveis |
+| 3 | Veículos jornalísticos e agências de checagem | Veículos com histórico e processos editoriais identificáveis; agências e seções de checagem de fatos (Agência Lupa, Aos Fatos, Fato ou Fake, Boatos.org, E-farsas) |
 | 4 | Fontes secundárias | Blogs, agregadores e páginas que reproduzem ou interpretam informações de outras fontes |
 | 5 | Conteúdo não verificado | Publicações anônimas, posts isolados, conteúdos sem origem identificável |
+
+### Checagens já publicadas
+
+Checagens publicadas por agências de checagem são consultadas antes da busca geral na web ([IA-03](requisitos.md#comportamento-da-ia)): quando um boato já foi verificado, a checagem costuma reunir as fontes primárias relevantes. Ainda assim, a checagem é uma fonte como as outras: o sistema apresenta também as fontes que ela cita, quando disponíveis, e não a trata como veredito.
 
 ## Independência das fontes (efeito eco)
 
