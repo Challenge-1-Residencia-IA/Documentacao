@@ -301,7 +301,7 @@ Critério	Qwen 2.5 7B	Qwen 2.5 3B	Llama 3.1 8B
 
 Entendeu a mensagem original?	✅ Sim	⚠️ Parcial |	❌ Não
 
-Seguiu o formato?	✅ Sim |	⚠️ Só o formato	❌ Não
+Seguiu o formato?	✅ Sim |	⚠️ Só o formato |	❌ Não
 
 Preencheu os campos?	✅ Sim	| ❌ Não	| ⚠️ Parcial
 
