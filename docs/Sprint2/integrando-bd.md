@@ -109,7 +109,7 @@ python
 from neon_serverless import neon
 import json
 
-DATABASE_URL = "postgresql://<usuario>:<senha>@<host-removido>/<db>?sslmode=require"
+DATABASE_URL = ""
 sql = neon(DATABASE_URL)
 
 # ... dentro da função analisar() ...
