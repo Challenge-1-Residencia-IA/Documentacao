@@ -46,7 +46,7 @@ pip3 install neon-serverless
 python
 from neon_serverless import neon
 
-DATABASE_URL = "postgresql://<usuario>:<senha>@<host-removido>/<db>?sslmode=require"
+DATABASE_URL = ""
 
 sql = neon(DATABASE_URL)
 
