@@ -38,22 +38,17 @@ Cada afirmação pode exigir fontes diferentes. Por isso, o sistema não deve tr
 
 ## Classificação das informações
 
-Antes da verificação, o sistema deve tentar determinar a natureza da informação. Categorias possíveis:
+Antes da verificação, o sistema deve determinar a natureza de cada afirmação, para não tentar provar ou refutar algo que não tem uma resposta factual objetiva.
 
-- fato verificável
-- opinião
-- previsão
-- hipótese
-- sátira
-- informação histórica
-- informação atual
-- alegação científica
-- alegação médica
-- alegação política
-- alegação econômica
-- informação fora de contexto
+| Natureza | Descrição | Exemplo |
+|---|---|---|
+| Fato verificável | Afirmação que pode ser confirmada ou contestada com evidências | "A Anvisa aprovou a vacina X" |
+| Opinião | Juízo de valor ou experiência pessoal | "Esse é o pior trânsito do país" |
+| Previsão | Afirmação sobre algo que ainda não aconteceu | "O dólar vai passar de R$ 8 até o fim do ano" |
+| Sátira | Conteúdo humorístico ou paródia, sem intenção factual | Texto de site de humor compartilhado como notícia |
+| Fora de contexto | Conteúdo autêntico apresentado com data, local ou premissa enganosa | Foto de uma enchente antiga compartilhada como se fosse de hoje |
 
-Essa classificação evita que o sistema tente provar ou refutar algo que não tem uma resposta factual objetiva.
+O **tema** de cada afirmação é registrado à parte: saúde, política, economia, ciência ou outro. Ele não muda a natureza da afirmação, mas identifica os temas de risco, em que fontes oficiais são priorizadas ([GR-06](requisitos.md#guardrails)). Se a afirmação é sensível ao tempo também é tratado à parte ([IA-05](requisitos.md#comportamento-da-ia)).
 
 ## Interação conversacional
 
