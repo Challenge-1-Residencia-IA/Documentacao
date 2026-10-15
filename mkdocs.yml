@@ -59,6 +59,7 @@ nav:
   - Qualidade e Governança:
       - Privacidade e segurança: privacidade-e-seguranca.md
       - Métricas e avaliação: metricas-e-avaliacao.md
+      - Relatório técnico do modelo: relatorio-tecnico-modelo.md
       - Testes: testes.md
       - Riscos: riscos.md
   - Planejamento:
