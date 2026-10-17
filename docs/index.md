@@ -15,12 +15,10 @@ A **Sophia** é uma assistente de WhatsApp que ajuda as pessoas a avaliar mensag
 
 | | |
 |---|---|
-| [Entrega final](entrega-final.md) | Onde está cada item da entrega: vídeo, datasets, requisitos, EDA, solução de IA, código |
+| [Entrega final](entrega-final.md) | Onde está cada item da entrega: datasets, requisitos, EDA, solução de IA, código |
 | [Produto final](produto-final.md) | O que a Sophia faz hoje, como funciona e quais são os limites |
 | [Arquitetura](arquitetura.md) | Componentes em produção, com diagramas |
 | [CI/CD e LLMOps](mlops-llmops.md) | Como uma mudança chega à produção com segurança |
-
-**Vídeo de apresentação:** [LINK_DO_VIDEO_YOUTUBE]
 
 ## Repositórios
 
