@@ -4,7 +4,6 @@ Mapa de onde está cada item pedido na entrega.
 
 | Item | Onde está |
 |---|---|
-| Vídeo explicativo (até 5 min) | [LINK_DO_VIDEO_YOUTUBE] |
 | Datasets | [Datasets e EDA](datasets-e-eda.md) e pasta `data/` do [experimentos](https://github.com/Challenge-1-Residencia-IA/experimentos) (versionada com DVC no DagsHub) |
 | Requisitos funcionais e não funcionais | [Requisitos](requisitos.md), [Levantamento de requisitos](levantamento-de-requisitos.md) e [Histórias de usuário](historias-de-usuario.md) |
 | Análise exploratória dos dados (EDA) | [Datasets e EDA](datasets-e-eda.md) e notebooks 01 a 03 do [experimentos](https://github.com/Challenge-1-Residencia-IA/experimentos/tree/main/notebooks) |
