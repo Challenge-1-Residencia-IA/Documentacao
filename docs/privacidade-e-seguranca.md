@@ -16,6 +16,10 @@ Como o bot recebe mensagens enviadas pelos usuários, a privacidade deve ser con
 !!! note "Princípio"
     O princípio de minimização de dados deve ser adotado: o sistema deve armazenar apenas aquilo que for necessário para seu funcionamento e avaliação.
 
+![Dados pessoais ocultados](assets/prints/06-golpe-dados-pessoais.gif){ width="560" loading=lazy }
+
+*Dados pessoais da mensagem (CPF, telefone, e-mail) ocultados antes da pesquisa.*
+
 ## Segurança
 
 O sistema deve considerar ataques tanto contra o software quanto contra o próprio processo de análise. Ameaças possíveis:
@@ -33,6 +37,10 @@ O sistema deve considerar ataques tanto contra o software quanto contra o própr
     Conteúdo encontrado na internet deve ser tratado como dado a ser analisado, e nunca como instrução para o modelo.
 
 Essa separação entre dados recuperados e instruções do sistema deve fazer parte do desenho do pipeline desde o início, não ser tratada apenas como um ajuste de última hora antes da entrega.
+
+![Prompt injection recusado](assets/prints/07-prompt-injection.gif){ width="560" loading=lazy }
+
+*Tentativa de prompt injection recusada.*
 
 ## Conteúdos potencialmente perigosos
 

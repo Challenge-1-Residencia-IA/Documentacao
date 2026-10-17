@@ -1,0 +1,20 @@
+/* Logo redondo na barra superior */
+.md-header__button.md-logo img {
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;
+  background: #fff;
+}
+.md-header__button.md-logo {
+  padding: 0.2rem 0.4rem;
+}
+
+/* Logo redondo e centralizado na página inicial */
+.logo-inicial {
+  display: block;
+  margin: 0 auto 1rem;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
