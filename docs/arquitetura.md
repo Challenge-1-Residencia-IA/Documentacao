@@ -41,7 +41,7 @@ flowchart TD
     TG[Plataforma de mensagens] --> API[API / Backend]
     API --> DB[(Banco de dados)]
     API --> PROC[Processamento]
-    PROC --> MODELO[Modelo de IA]
+    PROC --> MODELO[LLM Qwen 2.5 7B]
     MODELO --> EXTRACAO[Extração de afirmações]
     MODELO --> CLASSIF[Classificação]
     EXTRACAO --> BUSCA[Busca de informações]
@@ -53,55 +53,77 @@ flowchart TD
     RESP --> TG
 ```
 
-A arquitetura tecnológica específica é detalhada na seção de stack tecnológico abaixo.
+## Arquitetura em produção
 
-## Arquitetura do MVP
+![Arquitetura da Sophia em produção](assets/arquitetura/arquitetura-producao.png)
+
+| Componente | Onde roda | Função |
+|---|---|---|
+| Conector WhatsApp | VM Oracle Cloud | Lê as mensagens pelo WhatsApp Web (Playwright), controla sessões e fila de espera, envia as respostas |
+| Redis + ARQ | VM Oracle Cloud | Fila de análises entre conector e núcleo; estado do painel de operação |
+| Núcleo (worker) | VM Oracle Cloud | Grafo LangGraph: guardrails, extração, busca, síntese |
+| Base de checagens | Neon (Postgres + pgvector) | Documentos, trechos e embeddings; busca híbrida |
+| Coletor RSS | VM Oracle Cloud | Busca checagens novas das agências e grava na base |
+| LLM | Máquinas da equipe, via Tailscale | Qwen 2.5 7B no Ollama, com uma máquina principal e uma reserva |
+| GitHub Actions | GitHub | CI, deploy automático, reversão e portão de qualidade |
+
+### Linha de produção de uma mensagem
+
+![Linha de produção: do WhatsApp à resposta](assets/arquitetura/linha-de-producao.png)
+
+O conector nunca espera a análise: ele enfileira o pedido e segue lendo outros chats. Cada mensagem tem uma chave única, o que evita respostas duplicadas, e o registro de entregas guarda só hashes.
+
+Painel de operação na VM durante uma sequência de mensagens: sessões ativas, fila, últimas análises e comandos.
+
+![Painel de operação com fila](assets/prints/14-painel-fila.png){ width="760" loading=lazy }
+
+*Painel ao vivo: uma sessão com 3 mensagens pendentes e o tempo de cada análise.*
+
+### Grafo de análise
 
 ```mermaid
-flowchart TD
-    TG[Plataforma de mensagens] --> WH[Webhook - FastAPI]
-    WH --> ORQ[Agente Orquestrador - LangGraph]
-    ORQ --> P1[1. Extração de afirmações]
-    P1 --> P2[2. Classificação]
-    P2 --> P3[3. Busca web]
-    P3 --> P4[4. Extração de conteúdo]
-    P4 --> P5[5. Ranking de relevância]
-    P5 --> P6[6. Comparação de evidências]
-    P6 --> P7[7. Síntese educativa]
-    P7 --> P8[8. Crítica e limitações]
-    P8 --> RESP[Resposta adaptada]
-    RESP --> TG
+flowchart LR
+    E[Guardrail de entrada] -->|recusada| FIM([Fim])
+    E --> X[Extração da afirmação - LLM]
+    X --> B[Busca: base, depois web]
+    B --> S[Síntese - LLM]
+    S --> G[Guardrail de saída]
+    G --> FIM
 ```
 
-## Stack tecnológico previsto
+O fluxo é um **workflow determinístico**: quem decide buscar é o código, não o LLM. Isso garante que toda resposta passe pela busca e mantém a latência previsível com um modelo pequeno.
+
+### RAG: ingestão e consulta
+
+![RAG: ingestão e consulta](assets/arquitetura/rag-ingestao-consulta.png)
+
+- **Ingestão:** páginas das agências são baixadas (respeitando o `robots.txt`), fatiadas em trechos de até 180 palavras e transformadas em vetores com o modelo `multilingual-e5-base`.
+- **Consulta:** a afirmação é buscada ao mesmo tempo por sentido (vetores, índice HNSW) e por palavras (`tsvector` em português). As duas listas são unidas por **Reciprocal Rank Fusion**. Resultados abaixo dos limiares de similaridade são descartados.
+- **Atualidade:** se a base não tem resultado relevante, ou se a checagem mais recente tem mais de 6 meses, a busca na internet complementa, e a resposta informa a data.
+
+## Stack tecnológico
 
 | Área | Tecnologia |
 |---|---|
+| Canal | WhatsApp Web automatizado com Playwright (número dedicado) |
+| Fila | Redis + ARQ |
 | Orquestração | LangGraph |
-| LLM | Qwen 2.5 72B via OpenRouter |
-| Busca | Tavily API |
-| Embeddings | Colibri ou multilingual-e5-small |
-| Banco vetorial | PostgreSQL + pgvector |
-| Backend | FastAPI |
-| Canal do bot | A definir (API de bots da plataforma de mensagens escolhida) |
-| Ambiente de testes | Ngrok |
-| Extração de conteúdo | trafilatura ou BeautifulSoup |
+| LLM | Qwen 2.5 7B via Ollama, com failover entre duas máquinas |
+| Embeddings | `intfloat/multilingual-e5-base` (CPU) |
+| Banco vetorial | PostgreSQL + pgvector no Neon, migrações com Alembic |
+| Busca na internet | DuckDuckGo (`ddgs`), leitura de páginas com `trafilatura` |
+| Guardrails | Regras próprias e NeMo Guardrails |
+| Infraestrutura | VM Oracle Cloud (Ubuntu, systemd), rede privada Tailscale |
+| CI/CD e LLMOps | GitHub Actions, MLflow no DagsHub, DVC |
 
-!!! note "Nota de atualização"
-    O documento original avaliou tanto hospedagem local via Ollama (modelos abertos e leves, como Llama 3.1 ou Qwen 2.5 comprimido, para zerar custo de API) quanto um modelo maior via API. A decisão de tamanho de modelo deve ser validada com métricas reais por subtarefa (extração, classificação, comparação de evidências, síntese) antes de comitar a um único modelo para todo o pipeline, em vez de assumir um modelo grande por padrão.
+!!! note "Evolução em relação ao plano inicial"
+    O plano inicial previa um modelo maior via API (Qwen 2.5 72B no OpenRouter), webhook em FastAPI e busca pela Tavily. A comparação de modelos da Sprint 2 mostrou que o Qwen 2.5 7B local atende ao caso de uso sem custo de API. O canal passou a ser o WhatsApp, onde o público recebe a maior parte dos boatos, e a fila com Redis entrou para suportar várias conversas ao mesmo tempo.
 
 ### Fora do MVP
 
-Para manter o prazo viável, o MVP não inclui inicialmente:
-
-- múltiplos provedores de busca;
-- processamento assíncrono com Celery e Redis;
-- integração com Guardian API, NewsAPI ou serviços semelhantes;
 - interface web própria;
-- sistema de autenticação de usuários;
-- cache distribuído;
-- áudio;
-- imagens;
+- autenticação de usuários;
+- áudio, imagem e vídeo;
+- memória da conversa entre mensagens;
+- API oficial do WhatsApp Business;
 - gamificação.
-
-Esses itens podem ser avaliados posteriormente, caso exista tempo e necessidade.

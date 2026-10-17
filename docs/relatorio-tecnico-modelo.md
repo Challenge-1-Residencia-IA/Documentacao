@@ -1,21 +1,21 @@
-# Relatório técnico do modelo de IA
+# Relatório técnico da solução de IA
 
-Documentação do processo de preparação dos dados, construção, avaliação e das decisões técnicas do modelo de IA do projeto. O foco é o modelo, sua execução e sua avaliação; a aplicação (bot, API, interfaces) está fora do escopo deste relatório.
+Documentação do processo de preparação dos dados, montagem, avaliação e das decisões técnicas da solução de IA do projeto. O time não treinou um modelo próprio: usa o Qwen 2.5 7B como está, com RAG, prompts e guardrails. O foco é essa solução, sua execução e sua avaliação; a aplicação (bot, API, interfaces) está fora do escopo deste relatório.
 
 ## Resumo
 
-O modelo é uma **tutora baseada em LLM com recuperação de evidências (RAG)**: recebe uma mensagem, alegação ou link, busca checagens e fontes na internet e numa base local, e apresenta trechos literais dessas fontes, sem declarar a informação verdadeira ou falsa. Envolvendo a tutora, guardrails de entrada (com NeMo Guardrails) e de saída aplicam as regras do produto.
+A solução é uma **tutora baseada em LLM com recuperação de evidências (RAG)**: recebe uma mensagem, alegação ou link, busca checagens e fontes na internet e numa base local, e apresenta trechos literais dessas fontes, sem declarar a informação verdadeira ou falsa. Envolvendo a tutora, guardrails de entrada (com NeMo Guardrails) e de saída aplicam as regras do produto.
 
-Não há treino de pesos. O LLM (Qwen 2.5 7B) é usado como está, localmente, pelo Ollama. O que o time construiu, versiona e entrega como "modelo" é o sistema em volta dele: prompt, formato de resposta, base de evidências, índice vetorial e guardrails, empacotados como um modelo **MLflow pyfunc**. A avaliação usa um **golden set** de 65 boatos reais anotados pelo time e um conjunto de casos adversariais para os guardrails.
+Não há treino de pesos. O LLM (Qwen 2.5 7B) é usado como está, localmente, pelo Ollama. O que o time construiu, versiona e entrega é o sistema em volta dele: prompt, formato de resposta, base de evidências, índice vetorial e guardrails, empacotados no formato **MLflow pyfunc**. A avaliação usa um **golden set** de 65 boatos reais anotados pelo time e um conjunto de casos adversariais para os guardrails.
 
 | Artefato | Onde está |
 |---|---|
 | Notebook de carga, execução e avaliação | `experimentos/notebooks/04-validacao-modelo.ipynb` |
-| Modelo (MLflow pyfunc, inclui `python_model.pkl`) | gerado por `python -m scripts.registrar_modelo_rag_mlflow --salvar-em models/tutora-rag-v1` |
+| Tutora empacotada (MLflow pyfunc, inclui `python_model.pkl`) | gerado por `python -m scripts.registrar_modelo_rag_mlflow --salvar-em models/tutora-rag-v1` |
 | Dados e golden set (versionados com DVC no DagsHub) | `experimentos/data/` (`dvc pull`, `dvc repro`) |
 | Este relatório | esta página e o PDF correspondente |
 
-## 1. O modelo
+## 1. A solução
 
 | Componente | Escolha |
 |---|---|
@@ -26,9 +26,9 @@ Não há treino de pesos. O LLM (Qwen 2.5 7B) é usado como está, localmente, p
 | Guardrails | Entrada: verificações por padrão e NeMo Guardrails (classificação pelo Qwen). Blindagem das fontes antes do prompt. Saída: remoção de veredito e de julgamento do usuário, aviso em temas de risco |
 | Empacotamento | MLflow pyfunc: código, prompt, guardrails, corpus, índice e manifesto com os hashes; os pesos do Qwen são referenciados pelo digest |
 
-Ao carregar, o modelo confere se o Qwen instalado tem o mesmo digest do empacotado e recusa executar se não tiver. Trocar o prompt, a base ou o índice gera hashes novos e, portanto, uma versão nova do modelo.
+Ao carregar, o pacote confere se o Qwen instalado tem o mesmo digest do empacotado e recusa executar se não tiver. Trocar o prompt, a base ou o índice gera hashes novos e, portanto, uma versão nova do pacote.
 
-## 2. Preparação dos dados e construção do modelo
+## 2. Preparação dos dados e montagem da solução
 
 ### 2.1 Datasets e análise exploratória
 
@@ -68,7 +68,7 @@ A primeira linha do projeto foi ajustar o modelo: o desempenho medido só com pr
 - os dados disponíveis não eram compatíveis com a tarefa: a análise exploratória mostrou que os datasets ensinariam atalhos (comprimento, veículo, época) e não veracidade;
 - o ajuste de pesos não resolve requisitos centrais do produto: informação atualizada, fontes rastreáveis e atualização da base sem retreino.
 
-O projeto passou a usar o modelo-base com prompt, recuperação de evidências e guardrails. O "treinamento" do modelo entregue é, portanto, a construção e o versionamento da base de evidências e do índice.
+O projeto passou a usar o modelo-base com prompt, recuperação de evidências e guardrails. Não há modelo treinado na entrega: o trabalho está na construção e no versionamento da base de evidências, do índice, dos prompts e dos guardrails.
 
 ## 3. Critérios de seleção da abordagem
 
@@ -83,11 +83,11 @@ O projeto passou a usar o modelo-base com prompt, recuperação de evidências e
 
 ## 4. Métricas e resultados
 
-Os resultados abaixo vêm da execução do notebook `04-validacao-modelo.ipynb` sobre o modelo `tutora-rag-v1`. As definições das métricas estão no glossário do repositório `experimentos` (`references/glossario-metricas.md`).
+Os resultados abaixo vêm da execução do notebook `04-validacao-modelo.ipynb` sobre a tutora `tutora-rag-v1`. As definições das métricas estão no glossário do repositório `experimentos` (`references/glossario-metricas.md`).
 
 ### 4.1 Comportamento no golden set
 
-Cada uma das 65 mensagens foi enviada ao modelo carregado do MLflow, e a resposta foi comparada com o gabarito por corretores, um por requisito. A taxa considera só os itens em que o corretor se aplica.
+Cada uma das 65 mensagens foi enviada à tutora carregada do MLflow, e a resposta foi comparada com o gabarito por corretores, um por requisito. A taxa considera só os itens em que o corretor se aplica.
 
 | Requisito | Métrica | Itens | Acertos | Taxa |
 |---|---|---|---|---|

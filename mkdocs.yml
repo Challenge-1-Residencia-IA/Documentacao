@@ -1,12 +1,18 @@
-site_name: Documentação
-site_description: Documentação do Challenge 1 - Residência IA
+site_name: "Sophia — Verificadora de fatos"
+site_description: Documentação da Sophia, assistente de WhatsApp que ajuda a verificar informações mostrando fontes e evidências, sem dar veredito (Challenge 1 - Residência IA)
 repo_url: https://github.com/Challenge-1-Residencia-IA/Documentacao
 edit_uri: edit/main/docs/
 
 theme:
   name: material
   language: pt-BR
+  logo: assets/logo-sophia-redonda.png
+  favicon: assets/logo-sophia-redonda.png
   palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Alternar para modo claro
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: indigo
@@ -18,7 +24,7 @@ theme:
       primary: indigo
       toggle:
         icon: material/brightness-4
-        name: Alternar para modo claro
+        name: Alternar para o tema do sistema
   features:
     - navigation.instant
     - navigation.tracking
@@ -28,8 +34,13 @@ theme:
     - search.highlight
     - content.code.copy
 
+extra_css:
+  - stylesheets/extra.css
+
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
   - tables
   - toc:
       permalink: true
@@ -42,8 +53,11 @@ markdown_extensions:
 
 nav:
   - Início: index.md
+  - Entrega final: entrega-final.md
+  - Produto final: produto-final.md
   - Visão do Projeto:
       - Visão geral: visao-geral.md
+      - Guiding Questions: guiding-questions.md
       - Público-alvo: publico-alvo.md
       - Princípios do sistema: principios.md
   - Produto:
@@ -52,17 +66,21 @@ nav:
       - Levantamento de requisitos: levantamento-de-requisitos.md
       - Histórias de usuário: historias-de-usuario.md
       - Fluxo e interação: fluxo-e-interacao.md
+  - Dados:
+      - Datasets e EDA: datasets-e-eda.md
   - Sistema de IA:
-      - Fontes e evidências: fontes-e-evidencias.md
       - Arquitetura: arquitetura.md
+      - Fontes e evidências: fontes-e-evidencias.md
       - Pipeline de IA: pipeline-ia.md
   - Qualidade e Governança:
-      - Privacidade e segurança: privacidade-e-seguranca.md
+      - CI/CD e LLMOps: mlops-llmops.md
+      - Relatório técnico da solução de IA: relatorio-tecnico-modelo.md
       - Métricas e avaliação: metricas-e-avaliacao.md
-      - Relatório técnico do modelo: relatorio-tecnico-modelo.md
+      - Privacidade e segurança: privacidade-e-seguranca.md
       - Testes: testes.md
       - Riscos: riscos.md
   - Planejamento:
+      - Organização e Scrum: organizacao-scrum.md
       - Roadmap e cronograma: roadmap.md
 
   # deixar a aba de referências sempre por último

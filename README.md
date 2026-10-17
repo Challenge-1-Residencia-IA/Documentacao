@@ -1,6 +1,16 @@
-# Documentacao
+# Sophia — Verificadora de fatos
 
-Site publicado com [MkDocs](https://www.mkdocs.org/) via GitHub Pages: https://Challenge-1-Residencia-IA.github.io/Documentacao/
+<img src="docs/assets/logo-sophia.jpeg" alt="Logo da Sophia" width="220">
+
+Documentação da **Sophia**, assistente de WhatsApp que ajuda a avaliar mensagens mostrando fontes, evidências e técnicas de manipulação, sem dar veredito. Projeto do Challenge 1 da Residência em IA.
+
+**Site:** https://Challenge-1-Residencia-IA.github.io/Documentacao/ · **Entrega final:** https://Challenge-1-Residencia-IA.github.io/Documentacao/entrega-final/
+
+| Repositório | Conteúdo |
+|---|---|
+| [bot-core](https://github.com/Challenge-1-Residencia-IA/bot-core) | Aplicação em produção |
+| [experimentos](https://github.com/Challenge-1-Residencia-IA/experimentos) | Datasets, EDA, tutora RAG e avaliação |
+| Documentacao (este) | Site em MkDocs, publicado no GitHub Pages |
 
 ## Ambiente virtual Python (macOS)
 
